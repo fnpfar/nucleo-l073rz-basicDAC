@@ -79,8 +79,6 @@ int main(void)
 
 	uint8_t uart_buf[50];
 
-
-	uint16_t timer_val;
 	uint16_t countr;
 
   /* USER CODE END 1 */
@@ -126,9 +124,6 @@ int main(void)
 		countr = button_counter;
 
 
-
-
-		timer_val = __HAL_TIM_GET_COUNTER(&htim6);
 		strcpy((char*)uart_buf, "Timer test\r\n");
 		HAL_UART_Transmit(&huart2, uart_buf, strlen((char*)uart_buf), HAL_MAX_DELAY);
 
