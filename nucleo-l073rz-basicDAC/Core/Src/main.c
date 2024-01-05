@@ -370,7 +370,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   /* Prevent unused argument(s) compilation warning */
   UNUSED(GPIO_Pin);
   if(GPIO_Pin == B1_Pin){
-	  button_counter = (button_counter + 1) % 4;
+	  button_counter = (button_counter + 1) % 7;
 	  //__HAL_TIM_SET_PRESCALER(&htim6,button_counter);
 	  __HAL_TIM_SET_AUTORELOAD(&htim6,button_counter + 1);
   }
