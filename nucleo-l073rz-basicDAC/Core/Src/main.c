@@ -33,7 +33,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -51,7 +50,6 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 
 uint16_t button_counter = 0; // cyclic counter for user button edges
-
 
 /* USER CODE END PV */
 
@@ -105,7 +103,7 @@ int main(void) {
 
 	strcpy((char*) uart_buf, "Press USER button to change frequency.\r\n");
 	HAL_UART_Transmit(&huart2, uart_buf, strlen((char*) uart_buf),
-			HAL_MAX_DELAY);
+	HAL_MAX_DELAY);
 
 	HAL_TIM_Base_Start(&htim6);
 	HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
@@ -119,13 +117,14 @@ int main(void) {
 	while (1) {
 
 		// Transmits message through UART
-		if(last_button_counter_printed != button_counter){
+		if (last_button_counter_printed != button_counter) {
 			strcpy((char*) uart_buf, "Frequency #");
 			char counter_string[1]; // stores the counter as a character
-			itoa((int)button_counter, counter_string, 10);
-			strcat((char*)uart_buf, counter_string); // concatenates the counter
-			strcat((char*)uart_buf, "\r\n"); // concatenates the newline character
-			HAL_UART_Transmit(&huart2, uart_buf, strlen((char*) uart_buf), HAL_MAX_DELAY);
+			itoa((int) button_counter, counter_string, 10);
+			strcat((char*) uart_buf, counter_string); // concatenates the counter
+			strcat((char*) uart_buf, "\r\n"); // concatenates the newline character
+			HAL_UART_Transmit(&huart2, uart_buf, strlen((char*) uart_buf),
+					HAL_MAX_DELAY);
 			last_button_counter_printed = button_counter; // update
 		}
 
@@ -138,6 +137,7 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
+
 	}
 	/* USER CODE END 3 */
 }
@@ -223,7 +223,7 @@ static void MX_DAC_Init(void) {
 	/** Configure Triangle wave generation on DAC OUT1
 	 */
 	if (HAL_DACEx_TriangleWaveGenerate(&hdac, DAC_CHANNEL_1,
-			DAC_TRIANGLEAMPLITUDE_4095) != HAL_OK) {
+	DAC_TRIANGLEAMPLITUDE_4095) != HAL_OK) {
 		Error_Handler();
 	}
 	/* USER CODE BEGIN DAC_Init 2 */
